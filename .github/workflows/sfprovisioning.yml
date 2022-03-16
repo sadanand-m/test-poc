@@ -38,4 +38,4 @@ jobs:
           #schemachange --help
           #schemachange -f $(PROJECT_FOLDER)/migrations -a $(SF_ACCOUNT) -u $(SF_USERNAME) -r $(SF_ROLE) -w $(SF_WAREHOUSE) -d $(SF_DATABASE) -c $(SF_DATABASE).SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table -v
           #schemachange -f /home/runner/work/sf-provisioning/sf-provisioning/dbscripts -a agilonedev.us-east-1 -u SMUNSWAMY -r SYSADMIN -w A1SF_WH_INTERNAL_ETL_XSMALL -d DEMO -c DEMO.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table
-          schemachange -f /home/runner/work/sf-provisioning/sf-provisioning/dbscripts -a agilonedev.us-east-1 -u SMUNSWAMY -r SYSADMIN -w A1SF_WH_INTERNAL_ETL_XSMALL -d DEMO -c DEMO.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table -v
+          schemachange -f /home/runner/work/test-poc/test-poc/dbscripts -a agilonedev.us-east-1 -u SMUNSWAMY -r SYSADMIN -w A1SF_WH_INTERNAL_ETL_XSMALL -d DEMO -c DEMO.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table -v
