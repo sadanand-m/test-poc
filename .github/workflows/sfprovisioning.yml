@@ -32,8 +32,8 @@ jobs:
           echo "Step-1: installing schemachange"
           pip install schemachange --upgrade
           echo 'Step 2: Running schemachange'
-          #echo 'project folder: $PROJECT_FOLDER'
-          #echo 'pwd: $pwd'
+          echo 'project folder: $PROJECT_FOLDER'
+          echo 'pwd: $pwd'
 
           #schemachange --help
           #schemachange -f $(PROJECT_FOLDER)/migrations -a $(SF_ACCOUNT) -u $(SF_USERNAME) -r $(SF_ROLE) -w $(SF_WAREHOUSE) -d $(SF_DATABASE) -c $(SF_DATABASE).SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table -v
