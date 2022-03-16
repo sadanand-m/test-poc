@@ -32,6 +32,8 @@ jobs:
           echo "Step-1: installing schemachange"
           pip install schemachange --upgrade
           echo 'Step 2: Running schemachange'
+          echo 'account: $SF_ACCOUNT'
+          echo 'account: $(SF_ACCOUNT)'
           #echo 'project folder: $PROJECT_FOLDER'
           #echo 'pwd: $pwd'
 
