@@ -5,6 +5,6 @@
  create schema {{schemaname | testschema}};    
  ],
  "s3": [
- 
+     "todo"
  ]
 }
