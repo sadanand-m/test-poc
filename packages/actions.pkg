@@ -1,0 +1,10 @@
+{
+ "snowflake":[
+ user sysadmin ROLE;
+ create databse {{dbname | test}};
+ create schema {{schemaname | testschema}};    
+ ],
+ "s3": [
+ 
+ ]
+}
