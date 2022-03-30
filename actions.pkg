@@ -1,4 +1,10 @@
-sf {
- this is a test package file
- this is for actions
+{
+	"snowflake": [
+		"user sysadmin ROLE;",
+		"create databse {{dbname | test}};",
+		"create schema {{schemaname | testschema}};"
+	],
+	"s3": [
+		"CREATE OR REPLACE STAGE A1SF_STAGE_%1$s URL = 's3://%2$s' CREDENTIALS = (AWS_KEY_ID = '%3$s' AWS_SECRET_KEY = '%4$s');"
+	]
 }
