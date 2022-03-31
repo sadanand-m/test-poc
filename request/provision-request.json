@@ -1,0 +1,23 @@
+{
+    "tenantid": [
+        803,802
+    ],
+    "packages": [
+        {
+            "packageName": "bi.pkg",
+            "params": {
+                "user.wrh.timeout": 7000,
+                "key1": "value1",
+                "key2": "value2"
+            }
+        },
+        {
+            "packageName": "a360.pkg",
+            "params": {
+                "user.wrh.timeout": 7000,
+                "key1": "value1",
+                "key2": "value2"
+            }
+        }
+    ]
+}
