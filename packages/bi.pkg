@@ -1,6 +1,7 @@
 {
  "snowflake":[
-"USE ROLE PROVISIONER;",																									
+"ALTER USER A1SF_USER_{{env}}_PROVISIONER SET DEFAULT_ROLE = A1SF_ROLE_{{env}}_PROVISIONER;",
+ "USE ROLE A1SF_ROLE_{{env}}_PROVISIONER;",
 "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ;",																									
 "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE;",																									
 "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{tenantid}}_ADMIN;",
