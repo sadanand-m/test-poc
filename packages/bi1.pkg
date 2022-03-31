@@ -1,6 +1,6 @@
 {
  "snowflake":[
- "USE ROLE A1SF_ROLE_104_PROVISIONER;",																									
+ "USE ROLE SYSADMIN;", 
 "CREATE ROLE IF NOT EXISTS A1SF_ROLE_104_1078_READ;",																									
 "CREATE ROLE IF NOT EXISTS A1SF_ROLE_104_1078_READ_WRITE;",																									
 "CREATE ROLE IF NOT EXISTS A1SF_ROLE_104_ADMIN;",
