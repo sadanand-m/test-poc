@@ -8,9 +8,8 @@
 "CREATE DATABASE IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}};",
 "USE DATABASE A1SF_DB_{{env}}_{{tenantid}};",
 "CREATE SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}}.PUBLIC;",
-"USE DATABASE A1SF_DB_{{env}}_{{tenantid}};",
 "CREATE SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}}.BI_STAGE;",
-
+"CREATE OR REPLACE WAREHOUSE A1SF_WH_{{env}}_temp WITH WAREHOUSE_SIZE='X-SMALL' INITIALLY_SUSPENDED=TRUE AUTO_SUSPEND = 5",
 "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_0_READ;",
 "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_BI;",
 "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI;",
@@ -18,13 +17,11 @@
 "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML;",																									
 "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_ML;",
 "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_DW;",		
-
 "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_BI",
 "GRANT USAGE ON DATABASE A1SF_DB_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML;",
 "GRANT USAGE ON DATABASE A1SF_DB_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_DW;",
 "GRANT USAGE ON SCHEMA A1SF_DB_{{env}}_{{tenantid}}.PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML;",
 "GRANT USAGE ON SCHEMA A1SF_DB_{{env}}_{{tenantid}}.PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_DW;",
-
 "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_ML;",
 "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_ML TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_BI;",
 "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_BI;"
