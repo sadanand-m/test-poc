@@ -7,7 +7,7 @@
  "CREATE SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_0.PUBLIC;",
 "CREATE DATABASE IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}};",
 "USE DATABASE A1SF_DB_{{env}}_{{tenantid}};",
-"CREATE SCHEMA IF NOT EXISTS PUBLIC;",
+"CREATE SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}}.PUBLIC;",
 "USE DATABASE A1SF_DB_{{env}}_{{tenantid}};",
 "CREATE SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}}.BI_STAGE;",
 
