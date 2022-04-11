@@ -5,8 +5,8 @@
 		"CREATE DATABASE IF NOT EXISTS A1SF_DB_{{env}}_0;",
 		"USE DATABASE A1SF_DB_{{env}}_0;",
 		"CREATE SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_0.PUBLIC;",
-		"create or replace table A1SF_DB_{{env}}_0.PUBLIC.%s( gram  string, cnt int);",
-		"alter user A1SF_USER_{{env}}_PROVISIONER set default_warehouse = A1SF_WH_{{env}}_temp",
-		"insert into PUBLIC.%s(gram, cnt) values(?, ?)"
+		"CREATE or REPLACE TABLE A1SF_DB_{{env}}_0.PUBLIC.%s( gram  string, cnt int);",
+		"ALTER USER A1SF_USER_{{env}}_PROVISIONER SET DEFAULT_WAREHOUSE = A1SF_WH_{{env}}_TEMP",
+		"INSERT INTO PUBLIC.%s(gram, cnt) values(?, ?)"
 	]
 }
