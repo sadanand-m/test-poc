@@ -1,11 +1,11 @@
 {
 	"snowflake": [
 		"ALTER USER A1SF_USER_{{env}}_PROVISIONER SET DEFAULT_ROLE = A1SF_ROLE_{{env}}_PROVISIONER;",
-		"USE ROLE A1SF_ROLE_{{env}}_PROVISIONER;",
-		"CREATE DATABASE IF NOT EXISTS A1SF_DB_{{env}}_0;",
-		"USE DATABASE A1SF_DB_{{env}}_0;",
-		"CREATE SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_0.PUBLIC;",
-		"CREATE or REPLACE TABLE A1SF_DB_{{env}}_0.PUBLIC.{{table_name}}( gram  string, cnt int);",
-		"ALTER USER A1SF_USER_{{env}}_PROVISIONER SET DEFAULT_WAREHOUSE = A1SF_WH_{{env}}_{{tenantid}}"
+        "USE ROLE A1SF_ROLE_{{env}}_PROVISIONER;",
+        "CREATE DATABASE IF NOT EXISTS A1SF_DB_{{env}}_0;",
+        "USE DATABASE A1SF_DB_{{env}}_0;",
+        "CREATE SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_0.PUBLIC;",
+        "CREATE OR REPLACE TABLE A1SF_DB_{{env}}_0.BI.{{table_name}}( gram  string, cnt int);",
+        "ALTER USER A1SF_USER_{{env}}_PROVISIONER SET DEFAULT_WAREHOUSE = A1SF_WH_{{env}}_{{tenantid}}"
 	]
 }
