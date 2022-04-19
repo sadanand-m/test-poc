@@ -1,36 +1,74 @@
 {
  "snowflake":[
-     "ALTER USER A1SF_USER_{{env}}_PROVISIONER SET DEFAULT_ROLE = A1SF_ROLE_{{env}}_PROVISIONER;",
-     "USE ROLE A1SF_ROLE_{{env}}_PROVISIONER;",
-     "CREATE DATABASE IF NOT EXISTS A1SF_DB_{{env}}_0;",
-     "USE DATABASE A1SF_DB_{{env}}_0;",
-     "CREATE SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_0.PUBLIC;",
-     "CREATE DATABASE IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}};",
-     "USE DATABASE A1SF_DB_{{env}}_{{tenantid}};",
-     "CREATE SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}}.PUBLIC;",
-     "CREATE TRANSIENT SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}}.BI_STAGE;",
-     "CREATE OR REPLACE WAREHOUSE A1SF_WH_{{env}}_{{tenantid}} WITH WAREHOUSE_SIZE='X-SMALL' INITIALLY_SUSPENDED=TRUE AUTO_SUSPEND = 5",
-     "GRANT USAGE ON WAREHOUSE A1SF_WH_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_PROVISIONER;",
-     "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_0_READ;",
-     "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_BI;",
-     "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI;",
-     "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_BI;",
-     "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML;",																									
-     "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_ML;",
-     "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_DW;",	
-     "GRANT USAGE ON DATABASE A1SF_DB_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML;",
-     "GRANT USAGE ON DATABASE A1SF_DB_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_DW;",
-     "GRANT USAGE ON SCHEMA A1SF_DB_{{env}}_{{tenantid}}.PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML;",
-     "GRANT USAGE ON SCHEMA A1SF_DB_{{env}}_{{tenantid}}.PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_DW;",
-     "GRANT USAGE ON WAREHOUSE A1SF_WH_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI;",
-     "GRANT USAGE ON WAREHOUSE A1SF_WH_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_BI;",
-     "GRANT USAGE ON WAREHOUSE A1SF_WH_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML;",
-     "GRANT USAGE ON WAREHOUSE A1SF_WH_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_ML;",
-     "GRANT USAGE ON WAREHOUSE A1SF_WH_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_DW;",
-     "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_BI",
-     "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_ML;",
-     "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_ML TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_BI;",
-     "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_WRITE_BI;"
+    "ALTER USER A1SF_USER_{{env}}_PROVISIONER SET DEFAULT_ROLE = A1SF_ROLE_{{env}}_PROVISIONER;",
+    "USE ROLE A1SF_ROLE_{{env}}_PROVISIONER;",
+    "CREATE DATABASE IF NOT EXISTS A1SF_DB_{{env}}_0;",
+    "USE DATABASE A1SF_DB_{{env}}_0;",
+    "CREATE SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_0.PUBLIC;",
+    "CREATE TRANSIENT SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_0.BI;",
+    "CREATE DATABASE IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}};",
+    "USE DATABASE A1SF_DB_{{env}}_{{tenantid}};",
+    "CREATE SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}}.PUBLIC;",
+    "CREATE TRANSIENT SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}}.BI_STAGE;",
+    "CREATE TRANSIENT SCHEMA IF NOT EXISTS A1SF_DB_{{env}}_{{tenantid}}.SANDBOX;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_UDM_UPGRADER;",
+    "CREATE IF NOT EXISTS WAREHOUSE A1SF_WH_{{env}}_{{tenantid}} WITH WAREHOUSE_SIZE='X-SMALL' INITIALLY_SUSPENDED=TRUE AUTO_SUSPEND = 5",
+    "GRANT USAGE ON WAREHOUSE A1SF_WH_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_PROVISIONER;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_DW_PUBLIC;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI_PUBLIC;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML_PUBLIC;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_UDM;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI_STAGE;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_0_READ_BI;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READ_DB;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_SANDBOX;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_DW_PUBLIC;"
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_BI_PUBLIC;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_ML_PUBLIC;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_UDM;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_BI_STAGE;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_0_READWRITE_BI;",
+    "CREATE ROLE IF NOT EXISTS A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_DB;",
+    "GRANT USAGE ON DATABASE A1SF_DB_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_DW_PUBLIC;"
+    "GRANT USAGE ON DATABASE A1SF_DB_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI_PUBLIC;"
+    "GRANT USAGE ON DATABASE A1SF_DB_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML_PUBLIC;"
+    "GRANT USAGE ON SCHEMA A1SF_DB_{{env}}_{{tenantid}}.PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_DW_PUBLIC;"
+    "GRANT USAGE ON SCHEMA A1SF_DB_{{env}}_{{tenantid}}.PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI_PUBLIC;"
+    "GRANT USAGE ON SCHEMA A1SF_DB_{{env}}_{{tenantid}}.PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML_PUBLIC;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_DW_PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_UDM;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI_PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_UDM;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML_PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_UDM;"
+    "GRANT USAGE ON DATABASE A1SF_DB_{{env}}_0 TO ROLE A1SF_ROLE_{{env}}_0_READ_BI;"
+    "GRANT USAGE ON SCHEMA A1SF_DB_{{env}}_0.BI TO ROLE A1SF_ROLE_{{env}}_0_READ_BI;"
+    "GRANT SELECT ON ALL TABLES IN SCHEMA A1SF_DB_{{env}}_0.BI TO ROLE A1SF_ROLE_{{env}}_0_READ_BI;"
+    "GRANT USAGE ON DATABASE A1SF_DB_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI_STAGE;"
+    "GRANT USAGE ON SCHEMA A1SF_DB_{{env}}_{{tenantid}}.BI_STAGE TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI_STAGE;"
+    "GRANT SELECT ON ALL TABLES IN SCHEMA A1SF_DB_{{env}}_{{tenantid}}.BI_STAGE TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI_STAGE;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_UDM TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_DB;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_0_READ_BI TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_DB;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI_STAGE TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_DB;"
+    "GRANT USAGE ON DATABASE A1SF_DB_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_SANDBOX;"
+    "GRANT ALL ON SCHEMA A1SF_DB_{{env}}_{{tenantid}}.SANDBOX TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_SANDBOX;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_DW_PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_DW_PUBLIC;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_BI_PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_BI_PUBLIC;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_ML_PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_ML_PUBLIC;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_DW_PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_UDM;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_BI_PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_UDM;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_ML_PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_UDM;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_UDM TO ROLE A1SF_ROLE_{{env}}_UDM_UPGRADER;"
+    "GRANT CREATE TABLE ON SCHEMA A1SF_DB_{{env}}_{{tenantid}}.PUBLIC TO ROLE A1SF_ROLE_{{env}}_UDM_UPGRADER;"
+    "GRANT ALL ON SCHEMA A1SF_DB_{{env}}_0.BI TO ROLE A1SF_ROLE_{{env}}_0_READWRITE_BI;"
+    "GRANT ALL ON ALL TABLES IN SCHEMA A1SF_DB_{{env}}_0.BI TO ROLE A1SF_ROLE_{{env}}_0_READWRITE_BI;"
+    "GRANT ALL ON SCHEMA A1SF_DB_{{env}}_{{tenantid}}.BI_STAGE TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_BI_STAGE;"
+    "GRANT ALL ON ALL TABLES IN SCHEMA A1SF_DB_{{env}}_{{tenantid}}.BI_STAGE TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_BI_STAGE;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_UDM TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_DB;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_0_READWRITE_BI TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_DB;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_BI_STAGE TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_DB;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READ_UDM TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_BI;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_BI_PUBLIC TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_BI;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_{{tenantid}}_READWRITE_BI_STAGE TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_BI;"
+    "GRANT ROLE A1SF_ROLE_{{env}}_0_READ_BI TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_BI;"
+    "GRANT USAGE ON WAREHOUSE A1SF_WH_{{env}}_{{tenantid}} TO ROLE A1SF_ROLE_{{env}}_{{tenantid}}_BI;"
   ]
 }
 
